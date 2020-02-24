@@ -26,6 +26,7 @@ from __future__ import print_function, division
 
 import warnings
 
+from numpy import full
 from sympy import sympify, Expr, Tuple, Dummy, Symbol
 from sympy.external import import_module
 from sympy.core.function import arity
@@ -851,13 +852,13 @@ class Parametric3DLineSeries(Line3DBaseSeries):
         fz = vectorized_lambdify([self.var], self.expr_z)
         list_x = fx(param)
         if (list_x.shape == () ):
-            list_x = np.full(self.nb_of_points, list_x)
+            list_x = full(self.nb_of_points, list_x)
         list_y = fy(param)
         if (list_y.shape == () ):
-            list_y = np.full(self.nb_of_points, list_y)
+            list_y = full(self.nb_of_points, list_y)
         list_z = fz(param)
         if (list_z.shape == () ):
-            list_z = np.full(self.nb_of_points, list_z)
+            list_z = full(self.nb_of_points, list_z)
         return (list_x, list_y, list_z)
 
 
